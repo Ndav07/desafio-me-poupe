@@ -1,0 +1,7 @@
+
+
+class FindCepInformationUseCase {
+
+}
+
+export { FindCepInformationUseCase }

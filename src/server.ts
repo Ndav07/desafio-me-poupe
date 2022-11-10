@@ -1,9 +1,10 @@
-import * as express from 'express'
-import { Request, Response, NextFunction } from 'express'
+import 'reflect-metadata'
+import express, { Request, Response, NextFunction } from 'express'
 import 'express-async-errors'
 
+import '@shared/container/containers'
 
-import { router } from "@shared/infra/express/routes/routers";
+import { router } from '@shared/infra/express/routes/routers'
 import { AppError } from '@shared/errors/AppError'
 
 const app = express()

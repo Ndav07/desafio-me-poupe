@@ -1,5 +1,5 @@
 import { AppError } from '@shared/errors/AppError'
-import { IAvaregeCalculationRepository } from '@modules/average/repositories/Iavarege-calculation-repository'
+import { IAvaregeCalculationRepository } from '@modules/average/repositories/Iavarege-calculation.repository'
 
 interface IRequest {
   numberOne: number
@@ -7,7 +7,9 @@ interface IRequest {
 }
 
 class AverageCalculationUseCase {
-  constructor(private readonly avaregeCalculationRepository: IAvaregeCalculationRepository) {}
+  constructor(
+    private readonly avaregeCalculationRepository: IAvaregeCalculationRepository
+  ) {}
   async execute({ numberOne, numberTwo }: IRequest): Promise<number> {
     if (!numberOne || !numberTwo) {
       throw new AppError('Parameters not sent')
@@ -15,7 +17,10 @@ class AverageCalculationUseCase {
     if (isNaN(numberOne) || isNaN(numberTwo)) {
       throw new AppError('Parameters are not numbers')
     }
-    const average = await this.avaregeCalculationRepository.avarege({ numberOne, numberTwo })
+    const average = await this.avaregeCalculationRepository.avarege({
+      numberOne,
+      numberTwo,
+    })
 
     return average
   }

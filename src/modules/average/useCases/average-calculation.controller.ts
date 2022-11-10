@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
 import { AverageCalculationUseCase } from './average-calculation.useCase'
-import { AverageCalculationRepository } from '../repositories/avarege-calculation-repository'
+import { AverageCalculationRepository } from '../repositories/avarege-calculation.repository'
 
 class AverageCalculationController {
   async handle(req: Request, res: Response): Promise<Response> {
