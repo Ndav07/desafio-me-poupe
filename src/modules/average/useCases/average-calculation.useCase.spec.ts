@@ -1,6 +1,9 @@
+import 'reflect-metadata'
 import { AppError } from '@shared/errors/AppError'
-import { AverageCalculationRepository } from '../repositories/avarege-calculation.repository'
-import { AverageCalculationUseCase } from './average-calculation.useCase'
+
+import { AverageCalculationUseCase } from '@modules/average/useCases/average-calculation.useCase'
+import { AverageCalculationRepository } from '@modules/average/repositories/avarege-calculation.repository'
+
 
 describe('Average calculation', () => {
   

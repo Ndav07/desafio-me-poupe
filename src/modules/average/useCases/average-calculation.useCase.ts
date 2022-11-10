@@ -1,3 +1,5 @@
+import { inject, injectable } from 'tsyringe'
+
 import { AppError } from '@shared/errors/AppError'
 import { IAvaregeCalculationRepository } from '@modules/average/repositories/Iavarege-calculation.repository'
 
@@ -6,9 +8,11 @@ interface IRequest {
   numberTwo: number
 }
 
+@injectable()
 class AverageCalculationUseCase {
   constructor(
-    private readonly avaregeCalculationRepository: IAvaregeCalculationRepository
+    @inject('AverageCalculationRepository')
+    private avaregeCalculationRepository: IAvaregeCalculationRepository
   ) {}
   async execute({ numberOne, numberTwo }: IRequest): Promise<number> {
     if (!numberOne || !numberTwo) {

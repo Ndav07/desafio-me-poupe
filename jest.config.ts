@@ -1,7 +1,7 @@
 export default {
   bail: true,
   clearMocks: true,
-  coverageProvider: "babel",
+  coverageProvider: "v8",
   moduleNameMapper: {
     "@modules/(.*)": "<rootDir>/src/modules/$1",
     "@shared/(.*)": "<rootDir>/src/shared/$1",
