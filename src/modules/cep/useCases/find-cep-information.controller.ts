@@ -5,7 +5,7 @@ import { FindCepInformationUseCase } from './find-cep-information.useCase'
 
 class FindCepInformationController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const { cep } = req.body
+    const { cep } = req.params
 
     const findCepInformationUseCase = container.resolve(
       FindCepInformationUseCase

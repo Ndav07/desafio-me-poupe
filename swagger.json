@@ -1,0 +1,159 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Me Poupe API",
+    "description": "Desafio proposto pela Me Poupe, para concorrer a vaga de Jr",
+    "contact": {
+      "email": "nikollasdavidor@hotmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "URL da API"
+    }
+  ],
+  "paths": {
+    "/average": {
+      "post": {
+        "summary": "Calculo da média",
+        "description": "Será responsável por calcular a média de dois valores e retornar o resultado com 2 decimais, respeitando as regras de arrendodamento Half Round Up",
+        "tags": ["Average"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Average"
+              },
+              "examples": {
+                "average": {
+                  "value": {
+                    "numberOne": 4.357,
+                    "numberTwo": 2344.888
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number",
+                  "$ref":"#/components/schemas/ResponseAverage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parameters not sent or Parameters are not numbers"
+          }
+        }
+      }
+    },
+    "/cep/{cep}": {
+      "get": {
+        "summary": "Informações do CEP",
+        "description": "Será responsável por trazer informações do CEP, atrávez do consumo a API viaCEP (https://viacep.com.br/)",
+        "tags": ["CEP"],
+        "parameters": [
+          {
+            "name": "cep",
+            "in": "path",
+            "description": "CEP a ser Buscado",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref":"#/components/schemas/ResponseCep"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parameter not sent!!! or CEP invalid!!!"
+          },
+          "404": {
+            "description": "CEP NotFound!!!"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Average": {
+        "type": "object",
+        "properties": {
+          "numberOne": {
+            "type": "number"
+          },
+          "numberTwo": {
+            "type": "number"
+          }
+        }
+      },
+      "ResposeAverage": {
+        "type": "number",
+        "properties": {
+          "average": {
+            "type": "number"
+          }
+        }
+      },
+      "Cep": {
+        "type": "object",
+        "properties": {
+          "cep": {
+            "type": "string"
+          }
+        }
+      },
+      "ResponseCep": {
+        "type": "object",
+        "properties": {
+          "cep": {
+            "type": "string"
+          },
+          "logradouro": {
+            "type": "string"
+          },
+          "complemento": {
+            "type": "string"
+          },
+          "bairro": {
+            "type": "string"
+          },
+          "localidade": {
+            "type": "string"
+          },
+          "uf": {
+            "type": "string"
+          },
+          "ibge": {
+            "type": "string"
+          },
+          "gia": {
+            "type": "string"
+          },
+          "ddd": {
+            "type": "string"
+          },
+          "siafi": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

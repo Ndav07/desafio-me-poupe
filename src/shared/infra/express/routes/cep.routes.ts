@@ -6,6 +6,6 @@ const cep = Router()
 
 const findCepInformationController = new FindCepInformationController()
 
-cep.get('/', findCepInformationController.handle)
+cep.get('/:cep', findCepInformationController.handle)
 
 export { cep }
