@@ -12,10 +12,6 @@ class FindCepInformationUseCase {
   }
 
   async execute(cep: string): Promise<IResponse> {
-    if(!cep) {
-      throw new AppError('Parameter not sent!!!')
-    }
-
     if(this.isValidCep(cep) === false) {
       throw new AppError('CEP invalid!!!')
     }
@@ -25,7 +21,13 @@ class FindCepInformationUseCase {
       throw new AppError('CEP NotFound!!!', 404)
     }
 
-    return response
+    if(!response.bairro) {
+      response.bairro = 'Bairro não encontrado'
+      return response
+    } else {
+      return response
+    }
+
   }
 }
 

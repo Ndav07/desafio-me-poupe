@@ -103,7 +103,7 @@
           }
         }
       },
-      "ResposeAverage": {
+      "ResponseAverage": {
         "type": "number",
         "properties": {
           "average": {
